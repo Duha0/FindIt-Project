@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FindIt – Lost & Found</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo" aria-label="FindIt home">
+        <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 13V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2z"/>
+          <path d="M10 2h4l3 3v1a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V5l3-3z"/>
+        </svg>
+        <span class="logo-text">FindIt</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link active" data-section="all" aria-label="Home"><svg class="icon nav-icon-home" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a></li>
+        <li><a href="#" class="nav-link" data-section="lost" aria-label="Lost items"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.82A7 7 0 0 0 20 13v2a7 7 0 0 1-11.79 1.82"/></svg><span>Lost</span></a></li>
+        <li><a href="#" class="nav-link" data-section="found" aria-label="Found items"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg><span>Found</span></a></li>
+        <li><a href="#" class="nav-link" data-section="all" aria-label="All Items"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg><span>All Items</span></a></li>
+        <li><a href="#" class="nav-link" data-section="add" aria-label="Add item"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg><span>Add Item</span></a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <span class="toggle-icon" id="themeIcon">
+            <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main>
+
+    <!-- Hero section -->
+    <section class="hero">
+      <div class="hero-content">
+        <svg class="hero-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-linejoin="round">
+          <path d="M20 13V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2z"/>
+          <path d="M10 2h4l3 3v1a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V5l3-3z"/>
+          <path d="M16 17l2 2"/>
+        </svg>
+        <h1>Lost something? Found something?</h1>
+        <p>Help reunite items with their owners around campus.</p>
+        <div class="search-bar">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="searchInput" placeholder="Search items by name or description…" />
+          <button id="searchBtn" type="button">Search <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filters">
+      <div class="filter-group">
+        <button class="filter-btn active" id="filterLost">Lost</button>
+        <button class="filter-btn" id="filterFound">Found</button>
+        <button class="filter-btn" id="filterAll">All</button>
+      </div>
+      <div class="filter-group">
+        <label for="categoryFilter">Category</label>
+        <select id="categoryFilter">
+          <option value="">All Categories</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Books">Books</option>
+          <option value="Keys">Keys</option>
+          <option value="Clothing">Clothing</option>
+          <option value="ID Cards">ID Cards</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Items grid -->
+    <section class="items-section" id="itemsSection">
+      <div class="items-grid" id="itemsGrid"></div>
+      <p id="emptyMessage" class="empty-message" style="display:none;">
+        <svg class="empty-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        No items found.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Add Item Form Modal -->
+  <div class="modal" id="addModal">
+    <div class="modal-content">
+      <button class="close-btn" id="closeAddModalBtn">&times;</button>
+      <h2>Add New Item</h2>
+      <form id="addItemForm">
+        <div class="form-group">
+          <label for="itemTitle">Item Title</label>
+          <input type="text" id="itemTitle" required placeholder="e.g. Black backpack" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="itemStatus">Status</label>
+            <select id="itemStatus" required>
+              <option value="lost">Lost</option>
+              <option value="found">Found</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="itemCategory">Category</label>
+            <select id="itemCategory" required>
+              <option value="">Select category</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Books">Books</option>
+              <option value="Keys">Keys</option>
+              <option value="Clothing">Clothing</option>
+              <option value="ID Cards">ID Cards</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="itemLocation">Location</label>
+            <input type="text" id="itemLocation" required placeholder="e.g. Library, 2nd floor" />
+          </div>
+          <div class="form-group">
+            <label for="itemDate">Date</label>
+            <input type="date" id="itemDate" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="itemDescription">Description</label>
+          <textarea id="itemDescription" rows="4" placeholder="Any extra details…"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="itemImage">Image (optional)</label>
+          <input type="file" id="itemImage" accept="image/jpeg,image/png,image/webp" />
+          <div id="imagePreview" style="display:none; margin-top: 0.75rem;">
+            <img id="previewImage" src="" alt="Preview" style="max-width: 200px; max-height: 200px; border-radius: 8px; border: 1px solid var(--border);" />
+            <button type="button" id="removeImage" class="btn-cancel" style="margin-top: 0.5rem; font-size: 0.85rem; padding: 0.4rem 0.8rem;">Remove image</button>
+          </div>
+          <p class="image-hint" style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.3rem;">JPG, PNG, or WebP. Max 2MB (auto-compressed).</p>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" id="cancelAddBtn">Cancel</button>
+          <button type="submit" class="btn-submit">Add Item</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Item Details Modal -->
+  <div class="modal" id="detailModal">
+    <div class="modal-content detail-content">
+      <button class="close-btn" id="closeDetailModalBtn">&times;</button>
+      <div id="detailBody"></div>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2z"/><path d="M10 2h4l3 3v1a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V5l3-3z"/></svg>
+        FindIt
+      </div>
+      <p>&copy; 2026 FindIt – Lost &amp; Found. University project.</p>
+      <p>Built with HTML, CSS, and vanilla JavaScript.</p>
+      <p style="font-size:0.75rem;opacity:0.6;margin-top:0.25rem;">FindIt Final Build</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
